@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Sample</title>
+
+        <link rel="import" href="x-test.html">
+    </head>
+
+    <body>
+        <x-test id="x" data-attr="ABCD">ABCDEF</x-test>
+
+        <script>
+            document.addEventListener('DOMContentLoaded',
+                function() {
+                    var el = document.querySelector('#x');
+                    console.log(el.getAttribute('data-attr'));
+
+                    el.setAttribute('data-attr', 'XYZ');
+
+                    console.log(el.getAttribute('data-attr'));
+
+                    var dyn = new XTest();
+                    dyn.say();
+                    dyn.prop = 987;
+                    dyn.say();
+                }, false);
+        </script>
+    </body>
+</html>

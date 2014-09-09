@@ -1,0 +1,48 @@
+<template id="templ">
+    <style>
+        p { 
+            color: orange; 
+            border: 1px black solid;
+        }
+    </style>
+    
+    <p>
+        <content></content>
+    </p>
+</template>
+
+<script>
+    var thisDoc = document.currentScript.ownerDocument;
+
+    var proto = Object.create(HTMLElement.prototype);
+
+    proto.createdCallback = function () {
+        var template = thisDoc.querySelector('#templ');
+        var clone = thisDoc.importNode(template.content, true);
+        this.createShadowRoot().appendChild(clone);
+    };
+
+    proto.attachedCallback = function () { 
+        console.log('attached'); 
+    };
+
+    proto.detachedCallback = function () { 
+        console.log('detached'); 
+    };
+
+    proto.attributeChangedCallback = function (attributeName, oldValue, newValue) {
+        console.log('attribute ', attributeName, 'changed from', oldValue, 'to', newValue);
+    };
+
+    Object.defineProperty(proto, 'prop', {
+        value: 123,
+        writable: true
+    });
+
+    proto.say = function() {
+        console.log(this.id);
+        alert('prop has value: ' + this.prop);
+    };
+
+    var XTest = document.registerElement('x-test', { prototype: proto });
+</script>
