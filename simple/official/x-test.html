@@ -1,11 +1,11 @@
-<template id="templ">
+<template id="template">
     <style>
-        p { 
-            color: orange; 
+        p {
+            color: orange;
             border: 1px black solid;
         }
     </style>
-    
+
     <p>
         <content></content>
     </p>
@@ -17,17 +17,17 @@
     var proto = Object.create(HTMLElement.prototype);
 
     proto.createdCallback = function () {
-        var template = thisDoc.querySelector('#templ');
+        var template = thisDoc.querySelector('#template');
         var clone = thisDoc.importNode(template.content, true);
         this.createShadowRoot().appendChild(clone);
     };
 
-    proto.attachedCallback = function () { 
-        console.log('attached'); 
+    proto.attachedCallback = function () {
+        console.log('attached');
     };
 
-    proto.detachedCallback = function () { 
-        console.log('detached'); 
+    proto.detachedCallback = function () {
+        console.log('detached');
     };
 
     proto.attributeChangedCallback = function (attributeName, oldValue, newValue) {

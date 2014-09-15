@@ -1,0 +1,28 @@
+<template id="template">
+    <h1 id="name"></h1>
+    <ul>
+        <content></content>
+    </ul>
+</template>
+
+<script>
+    (function() {
+        var thisDocument = document.currentScript.ownerDocument;
+        var proto = Object.create(HTMLElement.prototype);
+
+        proto.createdCallback = function () {
+            var template = thisDocument.querySelector('#template');
+            var clone = thisDocument.importNode(template.content, true);
+
+            clone.querySelector('#name').innerHTML = this.getAttribute('name');
+
+            this.createShadowRoot().appendChild(clone);
+        };
+
+        proto.attributeChangedCallback = function (attributeName, oldValue, newValue) {
+            console.log('attribute ', attributeName, 'changed from', oldValue, 'to', newValue);
+        };
+
+        var MyTodoList = document.registerElement('my-todo-list', { prototype: proto });
+    })();
+</script>
