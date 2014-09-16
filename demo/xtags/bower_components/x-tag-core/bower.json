@@ -1,0 +1,17 @@
+{
+  "name": "x-tag-core",
+  "description": "X-Tag core library for creating Custom Elements.",
+  "version": "1.0.0-beta",
+  "keywords": [
+    "web-components",
+    "core",
+    "library",
+    "x-tag"
+  ],
+  "main": [
+    "src/core.js"
+  ],
+  "dependencies": {
+    "polymer-platform": "~0.2.4"
+  }
+}

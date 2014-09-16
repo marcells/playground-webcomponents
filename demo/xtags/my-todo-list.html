@@ -1,0 +1,32 @@
+<template id="template">
+    <h1 id="name"></h1>
+    <ul>
+        <content></content>
+    </ul>
+</template>
+
+<script>
+    (function () { 
+        var thisDocument = document.currentScript.ownerDocument;
+
+        xtag.register('my-todo-list', {
+            accessors: {
+                name: {
+                    attribute: {}
+                }
+            },
+            lifecycle: {
+                created: function () {
+                    var template = thisDocument.querySelector('#template');
+                    var clone = thisDocument.importNode(template.content, true);
+
+                    console.log(this);
+
+                    clone.querySelector('#name').innerHTML = this.name;
+                    
+                    this.createShadowRoot().appendChild(clone);
+                }
+            }
+        });
+    })();
+</script>

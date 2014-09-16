@@ -19,10 +19,6 @@
             this.createShadowRoot().appendChild(clone);
         };
 
-        proto.attributeChangedCallback = function (attributeName, oldValue, newValue) {
-            console.log('attribute ', attributeName, 'changed from', oldValue, 'to', newValue);
-        };
-
         var MyTodoList = document.registerElement('my-todo-list', { prototype: proto });
     })();
 </script>
