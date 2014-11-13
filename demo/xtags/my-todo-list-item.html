@@ -1,0 +1,31 @@
+<template id="template">
+    <style>
+        li {
+            list-style-type: none;
+        }
+    </style>
+
+    <li>
+        <input type="checkbox" id="item">
+        <label for="item">
+            <content></content>
+        </label>
+    </li>
+</template>
+
+<script>
+    (function () {
+        var thisDocument = document.currentScript.ownerDocument;
+
+        xtag.register('my-todo-list-item', {
+            lifecycle: {
+                created: function () {
+                    var template = thisDocument.querySelector('#template');
+                    var clone = thisDocument.importNode(template.content, true);
+
+                    this.createShadowRoot().appendChild(clone);
+                }
+            }
+        });
+    })();
+</script>

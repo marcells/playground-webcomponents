@@ -1,0 +1,6 @@
+{
+    "name": "polymer-demo",
+    "dependencies": {
+        "polymer": "Polymer/polymer"
+    }
+}

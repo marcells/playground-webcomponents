@@ -1,0 +1,22 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<polymer-element name="my-todo-list-item" attributes="name">
+    <template id="template">
+        <style>
+            li {
+                list-style-type: none;
+            }
+        </style>
+
+        <li>
+            <input type="checkbox" id="item">
+            <label for="item">
+                <content></content>
+            </label>
+        </li>
+    </template>
+
+    <script>
+        Polymer('my-todo-list-item');
+    </script>
+</polmer-element>

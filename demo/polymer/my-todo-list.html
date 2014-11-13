@@ -1,0 +1,14 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<polymer-element name="my-todo-list" attributes="name">
+    <template>
+        <h1>{{name}}</h1>
+        <ul>
+            <content></content>
+        </ul>
+    </template>
+
+    <script>
+        Polymer('my-todo-list');
+    </script>
+<polymer-element>
